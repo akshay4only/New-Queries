@@ -1,0 +1,14 @@
+select * from qc_los.qt_loandetail where prospectcode='LTIR23000035392'
+
+
+
+     select * from qc_los.qt_applicantmaster ap where ap.applicantcode ='CN0000000074148';
+     select * from qc_los.qt_employmentdetails ad where ad.applicantid='1000074148';
+     select * from qc_los.qt_incomedetail id where id.applicantid='1000074148';
+
+
+
+     
+     select * from qc_los.qt_incomedetaileligibility e where e.prospectid='1000035393'
+     
+     select * from qc_los.qt_other_loan_details ot where ot.applicantid='1000074148'

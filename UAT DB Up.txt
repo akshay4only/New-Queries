@@ -1,0 +1,3 @@
+1.	Goto d:\ drive
+2.	sqlplus sys as sysdba
+3.	startup pfile=d:\init.ora 

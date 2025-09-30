@@ -1,0 +1,6 @@
+select * from qc_los.qt_loandetail a where a.prospectcode='HNAL23000038148'
+select * from qc_lms.qt_loancharge ab where ab.prospect_id='1000038149'for update
+
+1000119237  1000113095 c (OTC_IMD_ID = activity id)
+
+select * from Qc_lms.Qt_Otc_Imd w where w.prospect_id='1000038149'

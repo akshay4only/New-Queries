@@ -1,0 +1,8 @@
+     select * from hfcdev.eba_intrack_version v where v.product_id in ('60','61') for update
+     select max(v.id) from hfcdev.eba_intrack_version v
+     
+     select * from hfcdev.eba_intrack_customers c
+     
+     select * from hfcdev.eba_intrack_product p where p.customer='11'
+     
+     select * from EBA_INTRACK_STATUS for update

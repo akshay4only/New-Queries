@@ -1,0 +1,25 @@
+SELECT 
+    um.employee_code,
+    -- Split the employee_name into first name, middle name, and last name
+    SUBSTR(um.employee_name, 1, INSTR(um.employee_name, ' ') - 1) AS first_name,
+    CASE 
+        WHEN INSTR(um.employee_name, ' ', INSTR(um.employee_name, ' ') + 1) > 0 
+        THEN SUBSTR(um.employee_name, INSTR(um.employee_name, ' ') + 1, INSTR(um.employee_name, ' ', INSTR(um.employee_name, ' ') + 1) - INSTR(um.employee_name, ' ') - 1)
+        ELSE NULL
+    END AS middle_name,
+    CASE 
+        WHEN INSTR(um.employee_name, ' ', INSTR(um.employee_name, ' ') + 1) > 0
+        THEN SUBSTR(um.employee_name, INSTR(um.employee_name, ' ', INSTR(um.employee_name, ' ') + 1) + 1)
+        ELSE SUBSTR(um.employee_name, INSTR(um.employee_name, ' ') + 1)
+    END AS last_name,
+    um.jmfl_email_id,
+    um.domain_id,
+    um.function,
+   '1a59f4f1282304cc919ddc4066bde76b7666bc3f71cada3ebba36018752f56fe' as Password 
+from hfc_etl.hfc_user_master um where um.is_active ='Y'
+and (um.function like '%RISK%'
+    or um.function like '%OPERATION%')
+and not exists (select 1 from qc_user_auth.qm_user u
+where u.is_active='A'
+and u.usercode=um.employee_code
+);

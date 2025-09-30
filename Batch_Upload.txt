@@ -1,0 +1,11 @@
+select * from qc_lms.qt_batchdtl b where b.batch_id='1000018332';
+select * from qc_master.qt_batch_upload a where a.upload_id='1000002422'
+select * from qc_master.qt_batch_upload_issues w where w.upload_id='1000002422'
+
+
+select * from qc_lms.qt_batchhdr h where h.batch_id='1000020441';
+
+update qc_lms.qt_batchhdr h set h.no_of_instr_clearance='1' where h.batch_id='1000020441';
+
+
+select * from qc_master.qm_batch_upload_status

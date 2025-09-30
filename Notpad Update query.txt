@@ -1,0 +1,3 @@
+select * from qc_los.qt_loandetail p where p.prospectcode='HGAN22000029379';  1000029380
+
+select * from qc_los.qt_notepad p where p.prospectid='1000029380' for update;

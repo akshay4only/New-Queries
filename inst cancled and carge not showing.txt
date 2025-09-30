@@ -1,0 +1,5 @@
+select * from QC_LMS.QT_INSTR_ENTRY_DTL dt where dt.prospect_id ='1000070143' order by 6 1
+
+select * from qc_lms.qt_loancharge where prospect_id ='1000070143' and instl_no='1'
+
+update qc_lms.qt_loancharge set wip_amount='0' where prospect_id ='1000070143' and instl_no='1'

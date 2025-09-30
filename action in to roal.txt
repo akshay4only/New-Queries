@@ -1,0 +1,26 @@
+
+ Insert into qm_role ro(
+ select 
+ (select max(ro.userrole_x_menu_id) from qm_role ro )+ rownum,
+ 1000000063 rollid,
+ ro.action_id,
+ ro.privilege_id,
+ ro.description,
+ 'ok' maker_remark,
+ sysdate maker_datetime,
+ sysdate maker_date,
+ 1000000346 maker_id,
+ sysdate send_to_auth,
+ sysdate auth_time,
+ sysdate auth_date,
+ 1000000360 auth_id,
+ 'ok' auth_remark,
+ null auth_status,
+ sysdate lastupdate_datetime,
+ 'A' is_active,
+ 1000000346 createdby,
+ sysdate created_datetime,
+ null updateby,
+ null update_datetime
+from qm_role ro where  ro.role_id='1000000023' 
+ and ro.action_id not in ('1100106489','1000001689') and ro.is_active='A')

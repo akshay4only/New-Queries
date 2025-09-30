@@ -1,0 +1,41 @@
+select sum(pxi.premium_amt) , sum(pxi.st_premium_amt), round(pxi.premium_amt) , sum(pxi.st_premium_amt),sum(pxi.tot_premium_amt) 
+from qc_los.qt_prospect_x_insurance pxi 
+where pxi.prospectid=1000025080 --8788 +86707 = 95495
+select 8788 +86707 from dual
+select * from qc_lms.qt_loancharge lch where lch.prospect_id=1000025080
+
+Rigths for pni
+
+SEL--nikhilp,Lpun23000037023
+select * from qc_los.qt_loandetail where upper(prospectcode) = UPPER('Lpun23000037023')
+
+select * from qc_los.qt_loandetail where SCHEME = 2000000107
+
+SELECT * FROM QC_MASTER.QM_USER WHERE LOGINNAME = 'NIKHILP'  ---1000000374
+
+select max(id)+1 from qc_master.qm_scheme_x_reportconFIG   --1000000296
+select * from qc_master.qm_scheme_x_reportconfig WHERE ACTIONID = 1100106647  for update---200000010
+
+For Batch issues
+
+select * from qc_master.qt_batch_upload bu order by 1 desc
+select * from qc_lms.qt_loancharge
+select * from qc_lms.qt_npa_stage_movements sm where sm.agreement_id='1000009474'
+select * from qc_los.qt_loandetail ld where ld.prospectcode='HANG20000009473'---1000009474
+
+SELECT * FROM QC_MASTER.QT_BATCH_UPLOAD_ISSUES u where u.upload_id='1000001697' order by 3 desc
+SELECT * FROM QC_LOS.QT_LOANDETAIL WHERE PROSPECTCODE = 'HANG23000040574'
+SELECT * FROM QC_MASTER.QM_LOAN_STATUS
+sELECT * FROM QC_MASTER.QM_ACTION WHERE MENU_TYPE LIKE '%DISBURSAL%';--1100106964
+
+
+sELECT * FROM  QC_MASTER.QT_BATCH_UPLOAD_TEMP_PAYMENT where upload_id='1000001697'
+
+LYAV23000036828
+
+LCHN23000036986
+
+LTPJ22000030411
+
+HAMD23000037039
+Chang

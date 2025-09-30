@@ -1,0 +1,4 @@
+select applicantcode customerid, addr.email, REGEXP_COUNT(email, '[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}') 
+ from (select distinct app.applicantcode, email from qc_los.qt_applicantaddress addr, qc_los.qt_applicantmaster app 
+ where addr.applicantid = app.applicantid) addr
+where not REGEXP_LIKE(email, '[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}', 'i')

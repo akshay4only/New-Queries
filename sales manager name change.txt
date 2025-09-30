@@ -1,0 +1,12 @@
+Kindly change the Relationship Manager name from “ASHISH GUPTA” to “Kanickaraj” for captioned case on production.
+
+Select * from qc_master.qm_salesmanager  ==> to get the SM ID
+
+Select * from qc_master.qm_salesmanager where salesmanagercode = '190131';
+
+Select * from qc_master.qm_salesmanager sm where upper(sm.salesmanagername) 
+like upper('%Anurag Chourasiya%');
+
+update qc_los.qt_loandetail al
+   set al.salesmanagerid = '1000000001'  --  ==>update SM ID
+where al.prospectcode in ('LCHN18000003061') -- ==> to update the SM name.

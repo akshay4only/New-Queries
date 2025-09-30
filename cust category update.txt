@@ -1,0 +1,8 @@
+
+update qc_los.qt_applicantmaster am set am.custcategory='1000000001' where am.applicantid in (
+select lxc.applicantid from qc_los.qt_loan_x_customer lxc where lxc.prospectid in
+(select ld.prospectid from qc_los.qt_loandetail ld where ld.prospectcode in 
+('LKRG23000040254')
+and lxc.applicanttype='1000000001') )
+
+select * from qc_master.qm_customercategory

@@ -1,0 +1,6 @@
+select * from qc_los.qt_loandetail ld where ld.prospectcode='HKHN23000041519'
+
+1000043095   HKHN23000043094
+1000041520   HKHN23000041519
+
+select * from qc_los.qt_limit_financial_dtls dtls where dtls.prospectid='1000041520'

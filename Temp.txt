@@ -1,0 +1,2 @@
+
+ select * from qc_master.qm_agentmaster_temp for update;

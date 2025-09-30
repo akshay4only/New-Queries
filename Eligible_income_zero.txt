@@ -1,0 +1,8 @@
+  select * from qc_los.qt_loandetail where prospectcode='LSRT23000041313'
+
+  select * from qc_los.qt_applicantmaster w where w.applicantcode='CN0000000014343'
+     
+   1.  select * from qc_los.qt_employmentdetails ad where ad.applicantid='1000089364' for update ---- eligible income flag "Y"
+
+
+    2. select * from qc_los.qt_incomedetail id where id.applicantid='1000089364' for update 

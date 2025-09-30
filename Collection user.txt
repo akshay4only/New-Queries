@@ -1,0 +1,2 @@
+select * from qc_user_auth.qm_user u where u.userid in (1000000120, 1000000334) and  collection_user='Y' order by 1 desc
+select * from qc_user_auth.qm_user_x_role ux where ux.user_id in (1000000120, 1000000334) for update

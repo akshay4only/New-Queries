@@ -1,0 +1,15 @@
+select ag.agencymasterid,
+       ag.agencymastercode,
+       ag.agencymastername,
+      ag.active agency_status,
+       agtp.activity_type agency_type ,
+       (select agt.agencytypemastername from qc_master.Qm_Agencytypemaster agt where agt.agencytypemasterid = ag.agencytypeid) dsa_dst
+  from qc_master.qm_agencymaster ag, qc_master.qm_agency_x_activity_type agtp
+  where agtp.agencymasterid = ag.agencymasterid
+  and agtp.activity_type = 'SOURCING'
+  group by ag.agencymasterid,
+       ag.agencymastercode,
+       ag.agencymastername,
+      ag.active ,
+         agtp.activity_type ,
+         ag.agencytypeid

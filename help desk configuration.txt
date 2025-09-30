@@ -1,0 +1,4 @@
+select cc.first_name, cc.email, cc.phone, cc.phone_type, cc.helpdesk_email
+   -- into l_support_team, l_group_email, l_phone, l_phone_type, l_helpdesk_email
+    from eba_intrack_customer_contact cc
+   where cc.customer_id=12

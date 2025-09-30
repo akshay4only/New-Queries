@@ -1,0 +1,24 @@
+Run below scripts using QC_LMS schema:
+
+--Enable
+update qc_lms.qm_exec_frw_processes p set p.auto_scheduled = 'Y', p.scheduled_time = '03:00' where p.process_name = 'EOD' ;
+commit;
+
+--Disable
+update qc_lms.qm_exec_frw_processes p set p.auto_scheduled = 'N'
+where p.process_name = 'EOD' ;
+commit;
+
+
+--verify
+select * from qc_lms.qm_exec_frw_processes p 
+where p.process_name = 'EOD' ;
+commit;
+
+
+
+To check EOD Date
+
+select * from qc_user_auth.qm_sys_configuration
+
+

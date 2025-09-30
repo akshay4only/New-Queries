@@ -1,0 +1,31 @@
+delete qc_los.qt_creditdecisiondetail cdd where cdd.creditdecisiondetailid in (
+select creditdecisiondetailid from (
+select ld.prospectid,ld.prospectcode,cdd.creditdecisiondetailid,cdd."USER" user_ID,
+       'L1' app_level,
+       u.loginname,
+       (select 'Y'
+          from qc_master.qm_user_x_camlevel cm
+         where cm."USERID" = cdd."USER"
+           and cm."LEVEL" = 1
+           and rownum = 1) Level_access 
+  from qc_los.qt_creditdecisiondetail cdd,qc_los.qt_loandetail ld, qc_user_auth.qm_user u
+where cdd.approvelevel = 1
+   and ld.loansubstatusid = 1000000001
+   and ld.prospectid = cdd.prospectid
+   and u.userid = cdd."USER"
+union all
+select ld.prospectid,ld.prospectcode,cdd.creditdecisiondetailid,cdd."USER" user_ID,
+       'L2' app_level,
+       u.loginname,
+       (select 'Y'
+          from qc_master.qm_user_x_camlevel cm
+         where cm."USERID" = cdd."USER"
+           and cm."LEVEL" = 2
+           and rownum = 1) Level_access 
+  from qc_los.qt_creditdecisiondetail cdd,qc_los.qt_loandetail ld, qc_user_auth.qm_user u
+where cdd.approvelevel = 2
+   and ld.loansubstatusid = 1000000001
+   and ld.prospectid = cdd.prospectid
+   and u.userid = cdd."USER")
+   where    
+   app_level='L2' and level_access is null)

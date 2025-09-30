@@ -1,0 +1,6 @@
+select * from syno_crm.users where user_name like '180794';  -- id 94b80926-ad20-4947-af25-e0cd685dd29d
+select * from bm_branches where name like '%gandh%' -- branch id 7d8eb256-cc4b-11ec-9a59-29cfb31a8dd5
+select * from bm_branches_users_1_c;
+
+INSERT INTO `bm_branches_users_1_c` (`id`, `date_modified`, `deleted`, `bm_branches_users_1bm_branches_ida`, `bm_branches_users_1users_idb`, `designation`)
+VALUES ('1', '2022-11-25 12:12:35.000000', '0', '7d8eb256-cc4b-11ec-9a59-29cfb31a8dd5', '94b80926-ad20-4947-af25-e0cd685dd29d', 'cpa');

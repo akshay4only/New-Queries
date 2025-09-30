@@ -1,0 +1,20 @@
+select * from qc_master.qm_agentmaster q where q.agentmastercode='181161';
+
+copy 1. agentmasterid
+     2. agentmastername
+     3. agencyid
+
+go to 136 (agent Addition)
+ 
+agentmasterid    agentmastername     agencyid
+1000002327	 MURUGAN R	     1000001176
+
+select * from jm_channel where code ='1000001176'; -- 1(agnecyid)   1
+
+INSERT INTO `syno_crm`.`jm_agent` (`id`, `name`, `jm_channel_id_c`, `code`) ---id=incremental , code=agentmasterid
+VALUES ('126', 'MURUGAN R','1', '1000002327');
+
+to check user below query
+select * from jm_agent where name like'%MURUGAN R%';
+
+

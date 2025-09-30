@@ -1,0 +1,9 @@
+Queries used to extract the above details:
+select * from qc_los.qt_property p where p.prospect_id='1000000519'
+
+select * from qc_master.qt_property_techval_hl l where l.property_id=1228
+
+select * from qc_master.qm_statemaster s where s.statemasterid= 1000000060
+
+select * from qc_master.qm_citymaster ct where ct.citymasterid=7449
+select * from qc_master.qm_pincodemaster po where po.pincodemasterid=1000072312

@@ -1,0 +1,22 @@
+
+select * from qc_los.qt_applicantmaster am where am.applicantcode='CN0000000014995' for update;----married--1000000001
+
+    
+     select * from qc_master.qm_maritalstatus;
+
+update qc_los.qt_applicantmaster am  set am.martialstatus='1000000001'where am.applicantcode='CN0000000019623';
+
+commit;
+
+----------------------------------------------------
+
+  select * from qc_los.qt_applicantmaster am where am.applicantcode='CN0000000051031' for update;----married--1000000001
+         
+         
+         select * from qc_los.qt_loan_x_customer a where a.prospectid='1000025998';
+        
+         1000022987
+          1000023365
+          1000023366
+
+select * from qc_los.qt_applicantmaster where applicantid in (1000022987,1000023365,1000023366)for update;

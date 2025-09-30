@@ -1,0 +1,17 @@
+select * from qc_master.qm_product p where p.prodcode in ('PRD0000108','PRD0000050') and p.active='A'
+
+select * from QM_ASSET_CATEGORY_X_LTV assltv where assltv.assetcatltvid in ('1000000091',
+'1000000092',
+'1000000093',
+'1000000094') for  update  2000000108
+
+select * from qm_assetcategory ass where ass.productid ='2000000108'
+
+select * from qm_
+
+asset cetogery
+
+'1000000091',
+'1000000092',
+'1000000093',
+'1000000094'

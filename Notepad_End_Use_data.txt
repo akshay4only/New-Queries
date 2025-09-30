@@ -1,0 +1,11 @@
+select ld.prospectcode,
+        n.notetypename,
+       no.remarks,
+       no.description,
+       no.active    
+  from qc_master.qm_notetype n,
+       qc_los.qt_notepad     no,
+       qc_los.qt_loandetail  ld
+ where ld.prospectid = no.prospectid
+   and n.notetypeid = no.notetypeid
+   and n.notetypeid='1000000014';

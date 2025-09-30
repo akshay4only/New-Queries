@@ -1,0 +1,29 @@
+SELECT * FROM QC_MASTER.QM_GEO_X_BANKGL WHERE GEOID =1000000043;
+select bg.bankbranchid,bg.accountno, count(*)
+          from qc_master.qm_geo_x_bankgl bg
+group by bg.bankbranchid, bg.accountno
+having count(*)>1
+
+select *
+          from qc_master.qm_geo_x_bankgl bg
+         where /*bg.accountno = '10011896088'
+           and bg.geoid = 1000000018
+           and bg.bankid =934
+           and */bg.bankbranchid = 1000311418
+           
+           
+select * from QC_LOS.QT_PROSPECT_X_NACH_HIST
+qc_los.pkg_los_trn_bank_details
+select * from qc_master.qm_bankbranch bb where bb.bankbranch_id=1000000813
+
+
+select pxn.*, ld.branch
+  from qc_los.qt_prospect_x_nach pxn, qc_los.qt_loandetail ld
+where pxn.prospectid = ld.prospectid
+--and ld.prospectid=1000030345
+   and not exists (select 1
+          from qc_master.qm_geo_x_bankgl bg
+         where bg.accountno = pxn.lender_account_no
+           and bg.geoid = ld.branch
+           and bg.bankid = pxn.lender_bankid
+           and bg.bankbranchid = pxn.lender_bankbranch_id)

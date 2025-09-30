@@ -1,0 +1,17 @@
+
+
+GRANT DEBUG ANY PROCEDURE TO QC_LMS;
+GRANT DEBUG CONNECT SESSION TO QC_LMS;
+GRANT EXECUTE ON DBMS_DEBUG_JDWP To QC_LMS;
+COMMIT;
+-- Here you want to again substitute the HR user with your user doing the debugging
+BEGIN
+DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE
+   (host=>'127.0.0.1',
+     ace=> SYS.XS$ACE_TYPE(privilege_list=>SYS.XS$NAME_LIST('JDWP'),
+               principal_name=> ‘QC_LMS’,
+               principal_type=>SYS.XS_ACL.PTYPE_DB) 
+   );
+END;
+COMMIT;
+

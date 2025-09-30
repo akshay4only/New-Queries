@@ -1,0 +1,2 @@
+ select * from qc_los.qt_loan_x_customer lxc where lxc.prospectid in(
+   select ld.prospectid from qc_los.qt_loandetail ld where ld.prospectcode='HIDR23000041733') for update 

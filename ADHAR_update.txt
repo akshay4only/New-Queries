@@ -1,0 +1,4 @@
+update qc_los.qt_applicantmaster am set am.aadhaarcardno =  qc_common_util.pkg_encrypt_decrypt.FN_ENCRYPT(P_PLAINTEXT => '955962271226')
+where am.applicantcode='CN0000000057118'
+
+qc_accouting.qm_event - table for geo gl

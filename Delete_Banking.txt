@@ -1,0 +1,5 @@
+  select * from qc_los.qt_loandetail where prospectcode='HBAN19000005763'  -----prospectid=1000005763
+
+   select * from qt_loan_x_customer where prospectid='1000005763'
+
+  select * from qc_los.qt_bankdetails ab where ab.applicantid= '1000009901' for update

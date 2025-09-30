@@ -1,0 +1,14 @@
+ 1.   select ld.prospectid 
+
+          from qc_los.qt_loandetail ld 
+
+         where prospectcode in ('HDHL22000029420');
+
+2.select * from qc_los.qt_loan_x_customer where prospectid='1000029421'
+
+3.select * from qc_los.qt_applicantmaster am where am.applicantcode='CN0000000036965'
+
+4. select *
+   from qc_los.qt_applicantaddress ad
+  where ad.applicantid in (select am.applicantid from qc_los.qt_applicantmaster am
+                            where am.applicantcode ='CN0000000036965')for update;

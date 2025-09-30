@@ -1,0 +1,11 @@
+select * from qc_master.qm_statemaster p where p.statemasterid like '%Ariyal%';
+
+SELECT * FROM QC_MASTER.qm_pincodemaster p where p.pincode= 607103 for update;   21452   ---1000191048     --PCD0191048
+SELECT * FROM QC_MASTER.qm_pincodemaster order by 1 desc for update;
+
+select * from QC_MASTER.qm_citymaster p where p.citymastername like '%peri%'; 627  citymasterid-12070  ,   mastercode- CITY12070  , state-1000000054
+select * from QC_MASTER.qm_citymaster order by 1 desc for update;   1000000090
+
+
+select * from QC_MASTER.qm_pincode p where p.city_name='periyakattupalayam';
+select * from QC_MASTER.qm_citymaster p where p.citymasterid='9011'

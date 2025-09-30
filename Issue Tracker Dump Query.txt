@@ -1,0 +1,15 @@
+select v.INCIDENT_NUMBER,
+       v.product_name,
+       v.status_name,
+       to_char(v.DESCRIPTION) DESCRIPTION,
+       v.CREATED,
+       v.CREATED_BY_DETAILS,
+       v.raised_by_branch,
+       (select distinct 'Y' from  EBA_INTRACK_FILES f where f.incident_id = v.id ) attachement_yn
+  from eba_intrack_incidents_view v
+where v.customer in ('miFIN')
+   and exists (select 1
+          from eba_intrack_notes nt
+         where upper(nt.note) like '%APPROVAL%'
+           and nt.incident_id = v.id)
+and v.status_name is not null

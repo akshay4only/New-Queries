@@ -1,0 +1,26 @@
+SELECT U.EMPCODE FROM hfc_user_master_upload U GROUP BY U.EMPCODE HAVING COUNT(*) > 1
+SELECT U.USERCODE FROM hfc_user_master_upload U GROUP BY U.USERCODE HAVING COUNT(*) > 1
+
+
+select * from hfc_user_master um where um.employee_code in
+(select  um.employee_code from hfc_user_master um group by  um.employee_code having count(*)>1)
+for update 
+
+select * from hfc_user_master um where um.domain_id in (
+select  um.domain_id from hfc_user_master um group by  um.domain_id having count(*)>1)
+for update 
+
+select * from hfc_user_master um where um.is_active='N'
+and exists (select * from hfc_user_master_upload u where u.empcode=um.employee_code and u.status='Active')
+for update 
+
+ um.employee_code= '190469' or upper(um.domain_id)='RAJASEKARM'
+select * from hfc_user_master_upload u where u.empcode in (
+SELECT U.EMPCODE FROM hfc_user_master_upload U GROUP BY U.EMPCODE HAVING COUNT(*) > 1)
+for update 
+select * from hfc_user_master_upload u where u.usercode in (
+SELECT U.USERCODE FROM hfc_user_master_upload U GROUP BY U.USERCODE HAVING COUNT(*) > 1)
+for update 
+
+
+select * from qc_user_auth.qm_user@mifin_prod u where u.usercode='181092'

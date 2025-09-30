@@ -1,0 +1,18 @@
+
+//// common author pending
+
+select * from  qc_los.qt_deviation d
+where d.prospectid =
+       (select ld.prospectid
+          from qc_los.qt_loandetail ld
+         where ld.prospectcode = 'HJPR21000012021')
+   and deviationstatusid = 1000000001;
+
+
+///
+delete qc_los.qt_deviation d
+where d.prospectid =
+       (select ld.prospectid
+          from qc_los.qt_loandetail ld
+         where ld.prospectcode = 'LMDU20000008535')
+   and deviationstatusid = 1000000001;

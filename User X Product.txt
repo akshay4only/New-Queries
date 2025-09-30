@@ -1,0 +1,27 @@
+insert into qc_los.qm_user_x_product(id,productid,userid,active)
+select (select max(id) from qc_los.qm_user_x_product) + rownum, productid, userid, 'A'
+  from (select *
+          from (select u.userid
+                  from qc_user_auth.qm_user u
+                 where u.is_active = 'A'
+                   and exists (select 1
+                          from qc_user_auth.qm_user_x_role uxrl
+                         where uxrl.is_active = 'Y'
+                           and uxrl.role_id in
+                               (1000000020, 1000000021, 1000000022,
+                                1000000058, 1000000057, 1000000049)
+                           and uxrl.user_id = u.userid)) u,
+               (select prd.productid
+                  from qc_master.qm_product prd
+                 where prd.prodtypeid = 1000000002
+                   and prd.active = 'A'
+                union all
+                select prd.productid
+                  from qc_master.qm_product prd
+                 where prd.prodtypeid = 1000000001
+                   and prd.active = 'A') p) a
+where not exists (select *
+          from qc_los.qm_user_x_product uxp
+         where uxp.productid = a.productid
+           and uxp.userid = a.userid
+           and uxp.active='A')

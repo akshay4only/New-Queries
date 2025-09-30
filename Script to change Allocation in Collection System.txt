@@ -1,0 +1,2 @@
+update qc_collection.qt_case c  set c.allocated_to = (select u.userid from qc_user_auth.qm_user u where u.usercode ='180395') where c.case_code ='LKYN18000000563';
+

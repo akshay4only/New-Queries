@@ -1,0 +1,16 @@
+
+select ld.prospectid, pxa.activityid, act.menu_name, pxa.status
+ from qc_los.qt_prospect_x_activity pxa, qc_los.qt_loandetail ld, qc_master.qm_workflow_x_product wxo, qc_user_auth.qm_action act
+ where pxa.prospectid = ld.prospectid
+ and pxa.activityid = wxo.activityid
+ and wxo.actionid = act.action_id
+ and  ld.prospectcode = 'HVIL25000083058'
+-- and pxa.prospectid >= 1000020000
+order by pxa.prospectid, wxo.seqno;
+
+
+select * from qc_los.qt_prospect_x_activity pxa where 
+pxa.prospectid in (1000083059) and pxa.activityid in (1000000199,1000000179 );
+
+update qc_los.qt_prospect_x_activity pxa set pxa.status='1' where 
+pxa.prospectid in (1000083059) and pxa.activityid in (1000000199,1000000179 );

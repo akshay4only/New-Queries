@@ -1,0 +1,7 @@
+
+select * from qc_los.qt_creditdecisiondetail cdd where cdd.prospectid in (
+select ld.prospectid from qc_los.qt_loandetail ld where ld.prospectcode='HKYN18000000312');
+
+
+ 
+ select * from qc_user_auth.qm_user us where us.userid='1000000655'

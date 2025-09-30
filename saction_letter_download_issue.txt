@@ -1,0 +1,12 @@
+select * from qc_los.qt_loandetail ab where ab.prospectcode='LNGP23000042714'  prospect id 1000039113
+
+scheme 2000000063
+product 2000000057
+
+select * from qm_product pd where pd.productid='2000000063'
+select * from qc_master.qm_scheme_x_charge s where s.productid='2000000063' and s.chargeid='1000002100' for update
+select * from qc_master.qm_loancharge lc where lc.chargeid='1000002100'
+
+productid
+2000000063
+2000000061

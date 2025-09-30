@@ -1,0 +1,20 @@
+
+
+ select ld.prospectid 
+          from qc_los.qt_loandetail ld 
+         where prospectcode in ('LTPJ22000021081');
+
+
+select * from qc_los.qt_documentcollection where prospectid=1000041553 for update;
+select * from qc_master.qm_documentstatus
+delete qc_los.qt_documentcollection where prospectid=1000041553 and DOCCOLLECTIONSTATUSID ='1000000006'
+
+
+ select ld.prospectid 
+          from qc_los.qt_loandetail ld 
+         where prospectcode in ('LTPJ22000021081');
+
+
+select * from qc_los.qt_documentcollection where prospectid in ( select ld.prospectid 
+          from qc_los.qt_loandetail ld 
+         where prospectcode in ('LTPJ22000021081'))

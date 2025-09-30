@@ -1,0 +1,8 @@
+ select a.instalment_day from qc_los.qt_loandetail a where a.prospectcode='HKOT22000030347'
+
+
+jrxml
+parameter
+prospect_code
+preview
+use default

@@ -1,0 +1,25 @@
+If required extract this from HFCDEV@ORCL schema.
+
+
+select od.lan,
+       od.branch,
+       od.customername,
+       od.sanctioned_amount,
+       od.sanction_date,
+       od.total_disbursal_amount,
+       od.pos,
+       od.no_of_bounce,
+       (select count(1)
+          from qc_lms.qt_batchdtl bd
+         where bd.prospect_id = od.prospectid
+           and bd.instrument_status = 'B'
+           and bd.instrument_date between add_months(sysdate, -12) and
+               sysdate) noof_bounce_inlast_1year,
+       od.total_emi_due,
+       od.total_overdue_amount,
+       od.total_overdue_charges,
+       od.dpd,
+       lid.*
+  from hfcbi_overdue_report_tbl               od,
+       hfcbi_search_for_liquor_ind@mifin_prod lid
+where od.lan = lid.prospectcode

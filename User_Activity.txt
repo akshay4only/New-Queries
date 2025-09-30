@@ -1,0 +1,90 @@
+create table mifin_qm_user_31AUG23
+as
+select * from qc_master.qm_user@mifin_prod;
+/
+
+
+select um.employee_code,
+       um.employee_name,
+       um.domain_id,
+       upper(um.branch) branch,
+       um.designation,
+       um.function,
+       um.branch,
+       (select upper(up.branch) from hfc_user_master_upload up where up.empcode = um.employee_code) branch_new,
+       (select u.is_Active
+          from qc_user_auth.qm_user@mifin_prod u
+         where u.usercode = um.employee_code) is_mifin_user,
+       (select u.locked
+          from qc_user_auth.qm_user@mifin_prod u
+         where u.usercode = um.employee_code) locked_in_mifin
+  from hfc_user_master um
+where um.is_active = 'Y'
+   and upper(um.branch) in
+       ('INDORE', 'HYDERABAD', 'SECUNDERABAD', 'NALGONDA', 'RAIPUR',
+        'BOISAR', 'SANGLI', 'SATARA', 'SALEM', 'AJMER', 'ALWAR', 'ERODE',
+        'HUBLI', 'BHOPAL', 'BHILWARA')
+        
+        
+begin
+for i in (
+select um.employee_code,
+       um.employee_name,
+       um.domain_id,
+       upper(um.branch) branch,
+       um.designation,
+       um.function,
+       (select u.is_Active
+          from qc_user_auth.qm_user@mifin_prod u
+         where u.usercode = um.employee_code) is_mifin_user,
+       (select u.locked
+          from qc_user_auth.qm_user@mifin_prod u
+         where u.usercode = um.employee_code) locked_in_mifin
+  from hfc_user_master um
+where um.is_active = 'Y'
+   and upper(um.branch) in
+       ('INDORE', 'HYDERABAD', 'SECUNDERABAD', 'NALGONDA', 'RAIPUR',
+        'BOISAR', 'SANGLI', 'SATARA', 'SALEM', 'AJMER', 'ALWAR', 'ERODE',
+        'HUBLI', 'BHOPAL', 'BHILWARA')
+)
+loop
+if i.is_mifin_user = 'A' then
+   update qc_user_auth.qm_user@mifin_prod u set u.is_active = 'C', u.locked='Y' where u.usercode = i.employee_code;
+end if;
+end loop;
+end;
+/
+
+
+
+--Restore back as active
+begin
+for i in (
+select um.employee_code,
+       um.employee_name,
+       um.domain_id,
+       upper(um.branch) branch,
+       um.designation,
+       um.function,
+       um.is_active,
+       (select u.is_Active
+          from qc_user_auth.qm_user@mifin_prod u
+         where u.usercode = um.employee_code) is_mifin_user,
+       (select u.locked
+          from qc_user_auth.qm_user@mifin_prod u
+         where u.usercode = um.employee_code) locked_in_mifin
+  from hfc_user_master um
+where um.is_active = 'Y'
+   and upper(um.branch) in
+       ('INDORE',
+        'BOISAR', 
+        'HUBLI'))
+loop
+if i.is_active = 'Y' then
+   update qc_user_auth.qm_user@mifin_prod u set u.is_active = 'A',u.locked='N' where u.usercode = i.employee_code;
+end if;
+end loop;
+commit;
+end;
+/
+

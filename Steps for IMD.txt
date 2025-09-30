@@ -1,0 +1,8 @@
+Slight correction:
+
+1.	First, cancel these two cleared receipts(IMD)
+2.	Make Statutory fund as Zero
+3.	Enter   3540 and do maker/author and allocate in Cashflow
+4.	Enter          1 and do maker/author and allocate in Cashflow
+5.	Enter 13425 and do maker/author and allocate in Cashflow
+6.	Make Statutory fund as needed (236)

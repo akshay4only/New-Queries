@@ -1,0 +1,3 @@
+select * from qc_lms.qt_npa_stage_movements sm 
+where sm.agreement_id=(select ld.prospectid from qc_los.qt_loandetail ld where 
+ld.prospectcode='HNGP20000009115')

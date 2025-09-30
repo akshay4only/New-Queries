@@ -1,0 +1,11 @@
+select ld.prospectcode, 
+       pty.transaction_type,
+       ld.loantype,
+       lt.loantypename
+  from qc_los.qt_property    pty,
+       qc_los.qt_loandetail  ld,
+       qc_master.qm_loantype lt
+where pty.transaction_type = 1000000010
+   and pty.prospect_id = ld.prospectid
+   and ld.loantype = lt.loantypeid
+   and upper(lt.loantypename) not like '%TOP%UP%'

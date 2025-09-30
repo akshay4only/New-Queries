@@ -1,0 +1,17 @@
+
+--------Update Due day number (Loan Detail) in instalment day field(backend)
+ 
+select * from qc_los.qt_loandetail l where l.prospectcode='LNGP22000028808' for update;
+
+
+----------- connect 139--------------------
+
+Open "SANCTION_LETTER.jrxml"  
+click on preview 
+enter prospect code
+then check
+
+--- loan type not reflecting 
+
+Kindly select purpose 
+

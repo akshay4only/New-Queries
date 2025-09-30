@@ -1,0 +1,5 @@
+select g.description, gg.latitude, gg.longitude
+  from qc_master.qm_geo@mifin_prod g, branch_geocordinates gg
+where g.geoid = gg.branchid(+)
+   and g.geotypeid = 1000000006
+   and g.active='A'

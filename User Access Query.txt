@@ -1,0 +1,85 @@
+
+1. create user role 
+select * from qc_user_auth.qm_userrole ur order by ur.userroleid desc for update  
+
+1100000033   OPS_DISB_BRANCH
+1100000032   OPS_DISB_HO
+1100000031   OPS_BANKING
+1100000030   CUSTOMER_SUPPORT
+
+2.Action
+select * from qm_action ac where ac.menu_name like '%LOS%'
+  
+
+3.Insert Action in Role
+select * from qm_role ROL WHERE ROL.ROLE_ID='1100000033' for update;----- support (1000000049)
+ 
+4.select max(ro.userrole_x_menu_id) from qm_role ro -----210011097599
+
+select * from qm_action ac where ac.action_id in (
+  select ro.action_id from qm_role ro where ro.role_id ='1100000031' and ro.action_id not in(
+  select ro.action_id from qm_role ro where ro.role_id ='1000000021'
+  ))
+
+-------------------------------------------------------------------------------------------------------------------
+
+
+insert into qm_role(userrole_x_menu_id,role_id,action_id,privilege_id,is_active)
+select (select max(userrole_x_menu_id) from qm_role)+rownum,
+       1100000033,
+       act.action_id,
+       'E',
+       'A'
+ from qc_user_auth.qm_action act
+ where not exists (select 1 from qc_user_auth.qm_role rl where rl.action_id =  act.action_id and rl.role_id = 1100000033) 
+  and act.action_id in
+       (1000000017,1000000059,1000000063
+,1000000017,1000000024,1000000029,1000000033
+,1000000017,1000000054,1000000058
+,1000000017,1000001980,1000010111
+,1000000017,1000010244,1000010247
+,1000000017,1100106945,1100106948
+,1000000017,1000000021,1000000023
+,1000000017,1000000021,1000000022
+,1000000017,1000010034,1000010109
+,1000000017,1000000034,1000000037
+,1000000017,1000000034,1000000036
+,1000000017,1000000034,1000000038
+,1000000017,1000000039,1000000043
+,1000000017,1100106920,1100106934,1100106929
+,1000000017,1100106920,1100106933,1100106923
+,1000000017,1000000049,1000000053
+,1000000003,1000000044,1000000048
+,1000000003,1100010159,1100010160
+,1000000003,1000010186,1000010207
+,1000000003,1000000100
+,1000000074,1100106618
+,1000000074,9000001519
+,1000000074,1100106480,1100106569
+,1000000074,1000010254
+,1000000074,1100106489
+,1000000001,1000000002
+,1000000001,1000001686)
+
+-------------------------------------------------------------------------------------------------------------------
+
+select * from qc_user_auth.qm_user for update us where us.userid='1000000655'
+ 
+ select * from Qm_User_x_Role
+ 
+ select * from qm_role
+ ->UTILITY->RESET PASSWORD  1000000001   1000001738
+->LOS->VIEWER               1000000003   1000000100
+->UTILITY->CHANGE PASSWORD  1000000001   1000000002
+
+ select * from qc_user_auth.qm_userrole ur order by ur.userroleid desc for update  1000000060
+ 
+select * from qm_role ro where ro.role_id='1000000060' for update 
+
+ select * from qm_action ac where ac.menu_name like '%LOS%'
+ 
+ select * from qm_role ro where ro.action_id in ('1000000001','1000000003','1000001738','1000000100','1000000002') 
+ and ro.role_id='1000000060' for update
+ 
+  select max(ro.userrole_x_menu_id) from qm_role ro   210011097589
+ 

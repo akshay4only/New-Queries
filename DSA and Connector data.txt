@@ -1,0 +1,30 @@
+select am.agencymastercode DSA_code,
+am.agencymastername DSA_Name,
+am.created_datetime,am.active,
+(select listagg(prodname, ';') within group (order by prodname)
+  from (select distinct (case when prd.prodname like '%MSME%' then 'MSME' else 'HL' end) prodname
+    from qc_master.qm_agency_x_activity_type agtp, qc_master.qm_product prd
+where agtp.agencymasterid = am.agencymasterid
+and agtp.product = prd.productid
+and agtp.active ='A'
+and prd.active = 'A'
+and prd.prodtypeid = 1000000001)) products
+from qc_master.qm_agencymaster am 
+where am.agencytypeid in ('1000000001') 
+
+
+select am.agencymastercode DSA_code,
+am.agencymastername DSA_Name,
+am.created_datetime,am.active,
+(select listagg(prodname, ';') within group (order by prodname)
+  from (select distinct (case when prd.prodname like '%MSME%' then 'MSME' else 'HL' end) prodname
+    from qc_master.qm_agency_x_activity_type agtp, qc_master.qm_product prd
+where agtp.agencymasterid = am.agencymasterid
+and agtp.product = prd.productid
+and agtp.active ='A'
+and prd.active = 'A'
+and prd.prodtypeid = 1000000001)) products
+from qc_master.qm_agencymaster am 
+where am.agencytypeid in ('1000000007')
+
+ 

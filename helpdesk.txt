@@ -1,0 +1,7 @@
+select * from hfc_user_master uam where uam.employee_code IN ('130344','180874') for update
+
+select * from eba_intrack_users uss where uss.username ='AKSHAYPE' for update
+
+select * from eba_intrack_user_group  where ID = '9' for update uss 
+
+select max(ID) from eba_intrack_user_group

@@ -1,0 +1,122 @@
+
+//TAKE OUT PROPERTY ID FROM HERE USING 'SELECT' 
+
+delete from qc_los.qt_property pt
+ where pt.prospect_id in
+       (select ld.prospectid
+          from qc_los.qt_loandetail ld
+         where ld.prospectcode = 'LAMD19000004567')
+   and pt.property_code = 'AST0002186'
+
+
+/// TRANSACTION TYPE CHANGE:
+
+select * from qc_los.qt_loandetail l where l.prospectcode='HHYD21000012519';---1000012520-- exist=1000000004
+
+select * from qc_los.qt_property p where p.prospect_id=1000012520;
+
+select * from qc_master.qm_transactiontype ;
+
+
+
+////PROPERTY ADDRESS:
+
+
+select * from qc_los.qt_loandetail l where l.prospectcode='HSHD22000024322';  --1000024323
+  
+select * from qc_los.qt_property p where p.prospect_id='1000024323'; --13874
+
+select * from qc_master.qt_property_legalval_hl p where p.property_id=13874 FOR UPDATE;
+
+select * from qc_master.qt_property_techval_hl t where t.property_id=13874 for update;
+
+select * from qc_los.qt_property p where p.property_code='AST0012835' for update;
+
+
+select ld.prospectcode,
+       g.description branch,
+       (select ds.documentstatusname
+          from qc_master.qm_documentstatus ds
+         where ds.documentstatusid = d.doccollectionstatusid) documentstatus,
+       (select dt.documenttypename
+          from qc_master.qm_documenttype dt
+         where dt.documenttypeid = d.documenttypeid) document_type,
+       d.recieveddate,
+       u.loginname updated_by,
+       d.remarks,
+       d.create_Date,
+       d.documentid,
+       null property_address,
+       ld.sanctioned_amount loan_amount,
+       (select min(d.disbursaldate)
+          from qc_los.qt_disbursal d
+         where d.prospectid = ld.prospectid) first_disb_date,
+       (select distinct 'Yes'
+          from qc_los.qt_documentcollection d
+         where d.prospectid = ld.prospectid
+           and upper(d.remarks) like '%MORTGAGE%') mortage,
+       (select distinct 'Yes'
+          from qc_los.qt_documentcollection d
+         where d.prospectid = ld.prospectid
+           and upper(d.remarks) like '%DEED%') deed,
+       (select d.remarks
+          from qc_los.qt_documentcollection d
+         where d.prospectid = ld.prospectid
+           and upper(d.remarks) like '%MORTGAGE%'
+           and rownum =1) mortgage_remarks,
+       (select d.remarks
+          from qc_los.qt_documentcollection d
+         where d.prospectid = ld.prospectid
+           and upper(d.remarks) like '%DEED%'
+           and rownum =1) deed_remarks,
+       (select o.npa_stage from qc_master.hfcbi_overdue_report o where o.prospectid = ld.prospectid) loan_classification,
+       (select wl.loanstatusname from qc_master.qm_workflow_loanstatus wl where wl.loanstatusid = ld.loansubstatusid) loan_status,
+       (select o.property_address from qc_master.hfcbi_overdue_report o where o.prospectid = ld.prospectid) property_address
+  from qc_los.qt_documentcollection d,
+       qc_los.qt_loandetail         ld,
+       qc_master.qm_geo             g,
+       qc_user_auth.qm_user         u
+ where ld.prospectid = d.prospectid
+   and ld.branch = g.geoid
+   and d.documentid in
+       (select d.documentid
+          from qc_master.qm_document d
+         where d.documenttypeid = 1000000022)
+   and upper(d.remarks) like '%NAMUNA%'
+   and d.createdby = u.userid
+ 
+
+
+//// revised-
+
+
+select ld.prospectcode,
+        ld.loanamount,
+        ld.disbursaldate,
+        g.description branch,
+       (select ds.documentstatusname from qc_master.qm_documentstatus ds where ds.documentstatusid = d.doccollectionstatusid) documentstatus,
+       (select dt.documenttypename from qc_master.qm_documenttype dt where dt.documenttypeid = d.documenttypeid) document_type,
+         d.recieveddate,
+       u.loginname updated_by,
+       d.remarks,
+       d.create_Date,
+       d.documentid,
+       r.repaymentmodename
+  from qc_los.qt_documentcollection d,
+       qc_los.qt_loandetail         ld,
+       qc_master.qm_geo             g,
+       qc_master.qm_repaymentmode   r,
+       qc_user_auth.qm_user u
+ where ld.prospectid = d.prospectid
+   and ld.branch = g.geoid
+   and ld.repaymentmode= r.repaymentmodeid
+   and d.documentid in
+       (select d.documentid
+          from qc_master.qm_document d
+         where d.documenttypeid = 1000000022)
+   and upper(d.remarks) like '%NAMUNA%'
+   and d.createdby = u.userid
+
+ 
+ 
+ 

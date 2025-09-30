@@ -1,0 +1,33 @@
+SELECT
+    pan.applicantid_pan,
+    pan.applicantcode_pan,
+    pan.panno,
+    pan.pan_count,
+    aadhar.applicantid_aadhar,
+    aadhar.applicantcode_aadhar,
+    aadhar.aadhar,
+    aadhar.aadhar_count
+FROM
+    (SELECT
+        am.panno,
+        MIN(am.applicantid) AS applicantid_pan,
+        MIN(am.applicantcode) AS applicantcode_pan,
+        COUNT(*) AS pan_count
+    FROM
+        qc_los.qt_applicantmaster am
+    GROUP BY
+        am.panno
+    HAVING
+        COUNT(*) > 1) pan
+FULL OUTER JOIN
+    (SELECT
+        qc_common_util.pkg_encrypt_decrypt.FN_DECRYPT(am.aadhaarcardno) as AADHAR,
+        MIN(am.applicantid) AS applicantid_aadhar,
+        MIN(am.applicantcode) AS applicantcode_aadhar,
+        COUNT(*) AS aadhar_count
+    FROM
+        qc_los.qt_applicantmaster am
+    GROUP BY
+        am.aadhaarcardno
+    HAVING
+        COUNT(*) > 1) aadhar ON pan.applicantid_pan = aadhar.applicantid_aadhar;

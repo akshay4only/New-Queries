@@ -1,0 +1,44 @@
+When prospectcode is not visible on LOS VIEWER.
+-place customer id from qc_los.loandetail and put it in applicantaddress table under applicantid.
+////
+select * from qc_los.qt_loandetail d where d.prospectcode = 'LBAN21000011565';
+
+
+select * from qc_los.qt_applicantaddress a where a.applicantid='1000022355' for update;
+
+
+
+residence=1,
+offfice=2
+permanent=3
+
+ 
+ select *
+   from qc_los.qt_applicantaddress ad
+  where ad.applicantid in (select am.applicantid from qc_los.qt_applicantmaster am
+                            where am.applicantcode ='CN')for update; --- check addresstype field   --step 1
+
+
+select * from qc_los.qt_applocantaddress ad  where ad.applicantid in (select am.applicantid
+                            
+                            delete from qc_los.qt_applicantaddress ad where ad.addressid='';
+
+update qc_los.qt_applicantaddress ad set ad.addressid='' where ad.addressid='';
+
+ update qc_los.qt_applicantaddress ad set ad.flatno='H no.18 Kailash Puri 1st floor',ad.buildingname='MR-10 Chouraha Indore',
+  ad.zipcode='452001' where ad.addressid='1000038309';
+
+
+ and ad.applicantid='';  --step 2
+
+
+select * from qc_los.qt_loandetail d where d.prospectcode = 'HDHL20000010314';
+
+
+
+
+for guarantor:
+LAN ID:- HIDR20000009119
+Cust ID:- CN0000000019495
+
+old address-H NO. 462 A SUKHALIYA,INDORE VIJAY NAGAR MP,INDORE,452010

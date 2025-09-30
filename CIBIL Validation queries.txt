@@ -1,0 +1,24 @@
+select *
+  from qc_los.qt_applicantaddress app
+where length(app.zipcode)<> 6
+   
+update qc_los.qt_applicantaddress app set app.email = replace(upper(app.email),'GMAIL.CO','GMAIL.COM') where upper(app.email)  like '%@GMAIL.CO'
+update qc_los.qt_applicantaddress app set app.email = replace(upper(app.email),'GMAIL.CON','GMAIL.COM') where upper(app.email)  like '%@GMAIL.CON'
+update qc_los.qt_applicantaddress app set app.email = replace(upper(app.email),'@GMAILC.OM','GMAIL.COM') where upper(app.email)  like '%@GMAILC.OM'
+update qc_los.qt_applicantaddress app set app.email = replace(upper(app.email),'@GMAIL.OM','GMAIL.COM') where upper(app.email)  like '%@GMAIL.OM'
+
+update qc_los.qt_applicantaddress app set app.phone2 = replace(upper(app.phone2),'-','') where upper(app.phone2)= '-'
+update qc_los.qt_applicantaddress app set app.phone1 = replace(upper(app.phone1),'-','') where upper(app.phone1)= '-'
+update qc_los.qt_applicantaddress app set app.phone1 = replace(upper(app.phone1),'-','') where upper(app.phone1) like '%-%'
+update qc_los.qt_applicantaddress app set app.phone2 = replace(upper(app.phone2),'-','') where upper(app.phone2) like '%-%'
+
+update qc_los.qt_applicantaddress app set app.zipcode = null  where length(app.zipcode)<> 6
+
+select * from qc_los.qt_applicantmaster ap where length(ap.passportno) <> 8
+
+qc_los.qt_applicantmaster ap where length(ap.passportno) <> 8
+
+
+select *
+  from qc_los.qt_applicantaddress app
+where (length(app.phone1)<10 or length(app.phone2)<10)

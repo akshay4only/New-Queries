@@ -1,0 +1,6 @@
+LPUN23000039149
+run with  hfcdev
+
+select * from tbl_hfcbi_jmfpl_loanbook ab where ab.pan is null for update
+
+select * from qc_los.qt_applicantmaster q where q.applicantcode in ('CN0000000084181','CN0000000082064')for update

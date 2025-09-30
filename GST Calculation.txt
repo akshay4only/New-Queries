@@ -1,0 +1,5 @@
+select round(16859 / 118 * 9,2) per9_tax_value,
+       round(16859 / 118 * 9,2) per9_tax_value,
+       round(16859 / 118 * 100,2) base_value,
+       round( (16859 / 118 * 9) + (16859 / 118 * 9) + (16859 / 118 * 100),2) gross_value
+  from dual --Base value

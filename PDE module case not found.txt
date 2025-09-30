@@ -1,0 +1,16 @@
+
+
+select * from qc_los.qt_loandetail where prospectcode='HBAN19000005763'  -----prospectid=1000005763
+
+select * from qt_loan_x_customer where prospectid='1000005763'
+
+select * from qt_applicantmaster where applicantid in('1000009902', '1000009901') for update;
+
+select * from qc_lms.mak_applicantmaster where applicantid in('1000009902', '1000009901')
+
+
+
+update qc_los.qt_applicantmaster set  PDE_STATUS ='' where applicantid in (
+select lxc.APPLICANTID from qc_los.qt_loan_x_customer  lxc where lxc.prospectid in(
+    select ld.prospectid from qc_los.qt_loandetail ld where ld.prospectcode ='LDHL19000007038'
+) )

@@ -1,0 +1,4 @@
+update EBA_INTRACK_INCIDENTS SET DESCRIPTION ='bLANK' where  INCIDENT_NUMBER ='A0X1'
+
+  select * from eba_intrack_files f where f.incident_id in 
+  (select t.id from  EBA_INTRACK_INCIDENTS t where t.incident_number='A2FL') for update

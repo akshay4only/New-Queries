@@ -1,0 +1,3 @@
+select * from qc_los.qt_additional_sanction_terms st where st.prospectid in (
+
+select ld.prospectid from qc_los.qt_loandetail ld where ld.prospectcode ='HIDR22000029744')

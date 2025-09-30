@@ -1,0 +1,3 @@
+update qc_los.qt_documentcollection dc
+   set dc.remarks = replace(replace(dc.remarks, chr(10), ''), chr(13), '')
+ where (instr(remarks, chr(13)) > 0 or instr(remarks, chr(10)) > 0)

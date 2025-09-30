@@ -1,0 +1,2 @@
+select ld.loantype from qc_los.qt_loandetail ld where ld.prospectcode='HBVC23000032505';
+select * from qc_master.qm_loantype ty where ty.loantypeid ='1000000200' for update

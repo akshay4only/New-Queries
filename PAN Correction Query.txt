@@ -1,0 +1,93 @@
+
+Scripts used:
+
+create table qc_los.qt_applicantmaster_bkp21jul23
+as
+select * from qc_los.qt_applicantmaster;
+
+update qc_los.qt_applicantmaster app set panno = 'AABPG2666D' where upper(panno) = 'AABPS2666D';
+update qc_los.qt_applicantmaster app set panno = 'AAGPB9282M' where upper(panno) = 'AAGPA9282M';
+update qc_los.qt_applicantmaster app set panno = 'AAMPW1974B' where upper(panno) = 'AAMPW1947B';
+update qc_los.qt_applicantmaster app set panno = 'AAPPS7803L' where upper(panno) = 'AAPPM7803L';
+update qc_los.qt_applicantmaster app set panno = 'AARPM9408M' where upper(panno) = 'AARPA9408M';
+update qc_los.qt_applicantmaster app set panno = 'ASRPG8987B' where upper(panno) = 'ADRPG8987B';
+update qc_los.qt_applicantmaster app set panno = 'AFMPO0823L' where upper(panno) = 'AFNPO0823L';
+update qc_los.qt_applicantmaster app set panno = 'AZNPP4217G' where upper(panno) = 'AINPP4217G';
+update qc_los.qt_applicantmaster app set panno = 'AIQPR1461G' where upper(panno) = 'AIQPR1461G';
+update qc_los.qt_applicantmaster app set panno = 'AJOPV5777F' where upper(panno) = 'AJOPV5777F';
+update qc_los.qt_applicantmaster app set panno = 'AMOPJ4181D' where upper(panno) = 'AMOPG4181D';
+update qc_los.qt_applicantmaster app set panno = 'AMVPV2850N' where upper(panno) = 'AMVPV2580N';
+update qc_los.qt_applicantmaster app set panno = 'AOVPV6879A' where upper(panno) = 'AOVPV6879A';
+update qc_los.qt_applicantmaster app set panno = 'APHPM3673H' where upper(panno) = 'APHPM3673M';
+update qc_los.qt_applicantmaster app set panno = 'APSPV0257M' where upper(panno) = 'APSPV0257N';
+update qc_los.qt_applicantmaster app set panno = 'AQQPL7826K' where upper(panno) = 'AQQPL7026K';
+update qc_los.qt_applicantmaster app set panno = 'AOZPR6219M' where upper(panno) = 'AQZPR6219M';
+update qc_los.qt_applicantmaster app set panno = 'ASDPV7522P' where upper(panno) = 'ASDPV7522F';
+update qc_los.qt_applicantmaster app set panno = 'ATMPC2468F' where upper(panno) = 'ATMPC2488F';
+update qc_los.qt_applicantmaster app set panno = 'AWBPP1167G' where upper(panno) = 'AWBPP1167B';
+update qc_los.qt_applicantmaster app set panno = 'BBIPK4909C' where upper(panno) = 'BBIPJ4909C';
+update qc_los.qt_applicantmaster app set panno = 'BGEPK0452K' where upper(panno) = 'BCEPK0452K';
+update qc_los.qt_applicantmaster app set panno = 'BFYPB4644H' where upper(panno) = 'BEYPB4644H';
+update qc_los.qt_applicantmaster app set panno = 'BFMPP2041E' where upper(panno) = 'BFMPP2049M';
+update qc_los.qt_applicantmaster app set panno = 'BGMPV0768D' where upper(panno) = 'BGMPV0786D';
+update qc_los.qt_applicantmaster app set panno = 'BKDPP9810M' where upper(panno) = 'BKDPP8710M';
+update qc_los.qt_applicantmaster app set panno = 'BKHPR3049E' where upper(panno) = 'BKHPR3049E';
+update qc_los.qt_applicantmaster app set panno = 'BLFPG7666B' where upper(panno) = 'BLFPG7665B';
+update qc_los.qt_applicantmaster app set panno = 'EPFPS7270E' where upper(panno) = 'BPFPS7270E';
+update qc_los.qt_applicantmaster app set panno = 'BVBPR7354D' where upper(panno) = 'BVBPR7345D';
+update qc_los.qt_applicantmaster app set panno = 'CGMPR6037G' where upper(panno) = 'CGMPR6037R';
+update qc_los.qt_applicantmaster app set panno = 'CHRPR0934C' where upper(panno) = 'CHRPR0934O';
+update qc_los.qt_applicantmaster app set panno = 'CKKPK5866J' where upper(panno) = 'CKKPK5666J';
+update qc_los.qt_applicantmaster app set panno = 'CMIPP0970N' where upper(panno) = 'CMIPP0970M';
+update qc_los.qt_applicantmaster app set panno = 'CPAPS5462R' where upper(panno) = 'CPAPS5162R';
+update qc_los.qt_applicantmaster app set panno = 'CVAPG5966K' where upper(panno) = 'CVAPG5966K';
+update qc_los.qt_applicantmaster app set panno = 'DBZPS0189F' where upper(panno) = 'DBZPS1089F';
+update qc_los.qt_applicantmaster app set panno = 'DEZPM0196D' where upper(panno) = 'DEZPM1096D';
+update qc_los.qt_applicantmaster app set panno = 'DIZPP7177K' where upper(panno) = 'DIZPP7177K';
+update qc_los.qt_applicantmaster app set panno = 'DPUPP9003Q' where upper(panno) = 'DPUPP9003G';
+update qc_los.qt_applicantmaster app set panno = 'DWMPA2321B' where upper(panno) = 'DWMPA2321P';
+update qc_los.qt_applicantmaster app set panno = 'DZVPB2935Q' where upper(panno) = 'DZYPB2935Q';
+update qc_los.qt_applicantmaster app set panno = 'BHUPD6407J' where upper(panno) = 'EHUPD6407J';
+update qc_los.qt_applicantmaster app set panno = 'FLLPP6148F' where upper(panno) = 'FLLPP0148F';
+update qc_los.qt_applicantmaster app set panno = 'FMFPR5023E' where upper(panno) = 'FMFPR6023E';
+update qc_los.qt_applicantmaster app set panno = 'FTNPM9632K' where upper(panno) = 'FTNPM9635K';
+update qc_los.qt_applicantmaster app set panno = 'FYOPM0467G' where upper(panno) = 'FYOPM0467G';
+update qc_los.qt_applicantmaster app set panno = 'JKFPS1933C' where upper(panno) = 'JKFPS1833C';
+update qc_los.qt_applicantmaster app set panno = 'KIJPK4665I' where upper(panno) = 'KIJPK4665I';
+update qc_los.qt_applicantmaster app set panno = 'LEEPK6298H' where upper(panno) = 'LEEPK6298H';
+update qc_los.qt_applicantmaster app set panno = 'BSAPP8738F' where upper(panno) = 'PSAPP8738F';
+update qc_los.qt_applicantmaster app set panno = 'CKVPB8566R' where upper(panno) = 'SKVPB8566R';
+update qc_los.qt_applicantmaster app set panno = 'EXCPP3899D' where upper(panno) = 'WXCPP3899D';
+
+
+
+select *
+  from qc_los.qt_applicantmaster app
+where upper(app.panno) in (
+'ADZPV7543B',
+'AIGPC3239D',
+'AMQPT2917F',
+'AQJPP0207F',
+'ATLPJ8715D',
+'AUWPG5083D',
+'AXXPP0857C',
+'BOQPP6209D',
+'BFDPL1426G',
+'BFDPP5392F',
+'BEEPB0287F',
+'BWGPG8055A',
+'BHUPV9356G',
+'BINPH6609G',
+'BJCPC0304H',
+'BJEPG3420J',
+'BSXPC2480E',
+'BVYPJ7695G',
+'BXBPN1914M',
+'BYFPT5470D',
+'CCQPP7693N',
+'CFFPP3984Q',
+'CJQPC9283C',
+'CLXPM1097F')
+
+
+ 

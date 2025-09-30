@@ -1,0 +1,56 @@
+PFB sanction date wise PLR.
+
+Plz replace attached templates again and test as per below login.
+
+       , trim((
+          SELECT (case when (SELECT MAX(CRD.APPROVALDATE)
+                               FROM QC_LOS.QT_CREDITDECISIONDETAIL CRD
+                              WHERE CRD.PROSPECTID = LD.PROSPECTID
+                                AND CRD.ACTION = 1000000004
+                                AND CRD.APPROVELEVEL IS NOT NULL) <= '31-Dec-2018'
+                      then 'JMFHLR(16.0%)'|| to_char((ld.intrate - 16.0)*100, 's990') || ' bps = ' || to_char(ld.intrate, '90.00')  || '%'
+                      when (SELECT MAX(CRD.APPROVALDATE)
+                               FROM QC_LOS.QT_CREDITDECISIONDETAIL CRD
+                              WHERE CRD.PROSPECTID = LD.PROSPECTID
+                                AND CRD.ACTION = 1000000004
+                                AND CRD.APPROVELEVEL IS NOT NULL) <= '30-Jun-2022'
+                       then 'JMFHLR(16.5%)'|| to_char((ld.intrate - 16.5)*100, 's990') || ' bps = ' || to_char(ld.intrate, '90.00')  || '%'
+                      when (SELECT MAX(CRD.APPROVALDATE)
+                               FROM QC_LOS.QT_CREDITDECISIONDETAIL CRD
+                              WHERE CRD.PROSPECTID = LD.PROSPECTID
+                                AND CRD.ACTION = 1000000004
+                                AND CRD.APPROVELEVEL IS NOT NULL) <= '30-Apr-2023'
+                       then 'JMFHLR(17.25%)'|| to_char((ld.intrate - 17.25)*100, 's990') || ' bps = ' || to_char(ld.intrate, '90.00')  || '%'
+                       else 'JMFHLR(17.65%)'|| to_char((ld.intrate - 17.65)*100, 's990') || ' bps = ' || to_char(ld.intrate, '90.00')  || '%'
+                  end)
+
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+1.------------------------------Take Backup-------------------------------------
+create table qc_user_auth.qm_user_bkp_03May23
+as
+select * from qc_user_auth.qm_user;
+
+2.---------------------------Below scripts to give access to limited users only----------------------------------
+update  qc_user_auth.qm_user u set u.is_active = 'L', u.locked = 'Y' where u.locked = 'Y' and u.is_active='A';
+update  qc_user_auth.qm_user u set u.is_active = 'X',  u.locked = 'Y' where u.locked <> 'Y' and u.is_active='A';
+
+update qc_user_auth.qm_user u
+   set u.is_active = 'A', u.locked = 'N'
+where upper(u.loginname) in ('LEVITAFE',
+                              'RAMG',
+                              'SAKSHIJ',
+                              'BHAGYASHRIP',
+                              'RAVINDRAS',
+                              'ACHYUTAD',
+                              'SHEELAH');
+
+------------Run below scripts to give access to all users---------------------------------------------                              
+update  qc_user_auth.qm_user u set u.is_active = 'A', u.locked = 'Y' where  u.is_active='L';
+update  qc_user_auth.qm_user u set u.is_active = 'A',  u.locked = 'N' where  u.is_active='X';
+
+
+

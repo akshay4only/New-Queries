@@ -1,0 +1,17 @@
+select l.prospectcode,l.product,l.scheme from qc_los.qt_loandetail l where l.prospectcode='LIDR21000011653' FOR UPDATE; --- product- 2000000088 
+
+
+select * from qc_master.qm_product p where p.productid=2000000088;
+
+select * from qc_master.qm_product p where p.prodname like '%HFC-EIL%'---2000000089   SCHEME- 2000000066
+
+
+-----------------------------------------------------------------------------------------------------
+
+select l.prospectcode,l.product,l.scheme from qc_los.qt_loandetail
+ l where l.prospectcode IN ('LIDR23000037885', 'LMUM23000036888','LBAN23000037500','LJPR23000038007') FOR UPDATE; --- product- 2000000097  scheme   2000000101
+
+select * from qc_master.qm_product p where p.parentprodid='2000000088'
+select * from qc_master.qm_product p where p.productid in ('2000000066' ,'2000000068') ;
+
+select * from qc_master.qm_product p where p.prodname like '%PRD-EIL-MSME%'---2000000089   SCHEME- 2000000066

@@ -1,0 +1,12 @@
+select g.description, t.* from branch_geocordinates t, 
+qc_master.qm_geo@mifin_prod g where t.branchid = g.geoid  for update
+
+
+Login with schema QC_MASTER
+
+// take out geoid from geo table.
+
+select * from qc_master.qm_geo;      ----geoid-1000000078 
+
+// search through this geoid in branchid column under below table and update the coordinates.
+select * from BRANCH_GEOCORDINATES for update   

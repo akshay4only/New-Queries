@@ -1,0 +1,17 @@
+ select * from qc_los.qt_loandetail ab where ab.prospectcode ='LHIM23000035506' 1000054381
+
+ select * from Qc_los.Qt_Applicantmaster a where a.applicantid='1000054383' CN0000000054381
+ 
+ select * from qc_los.qt_loan_x_customer ac where ac.applicantcode='CN0000000054381' 1000035507,1000026075
+ 
+ select * from qc_los.qt_loandetail ax where ax.prospectid=1000035507
+ 
+ select * from qc_los.qt_loan_x_customer ac where ac.applicantid=1000054383
+
+
+
+Batch Upload-----
+
+Select * from qc_lms.qt_batchdtl ab  where ab.batch_id='1000017362'
+select * from qc_master.qt_batch_upload q where q.upload_id='1000001942'---BATCH_C
+select * from qc_master.qm_batch_hdr r where r.module_id='BATCH_C'

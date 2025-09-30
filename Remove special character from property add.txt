@@ -1,0 +1,11 @@
+update qc_los.qt_property p set p.flathouseno = replace(p.flathouseno,chr(9),'') where instr(p.flathouseno ,chr(9)) >0;
+update qc_los.qt_property p set p.buildingname = replace(p.buildingname,chr(9),'') where instr(p.buildingname ,chr(9)) >0 ;
+update qc_los.qt_property p set p.buildingname = replace(p.buildingname,'"','') where instr(p.buildingname ,'"') >0 ;
+update qc_los.qt_property p set p.flathouseno = replace(p.flathouseno,'"','') where instr(p.flathouseno ,'"') >0 ;
+update qc_los.qt_property p set p.area = replace(p.area,'"','') where instr(p.area ,'"') >0 ;
+update qc_los.qt_property p set p.area = replace(p.area,chr(9),'') where instr(p.area ,chr(9)) >0; 
+update qc_los.qt_property p set p.landmark = replace(p.landmark,'"','') where instr(p.landmark ,'"') >0 ;
+update qc_los.qt_property p set p.landmark = replace(p.landmark,chr(9),'') where instr(p.landmark ,chr(9)) >0 ;
+update qc_los.qt_property p set p.street = replace(p.street,'"','') where instr(p.street ,'"') >0 ;
+update qc_los.qt_property p set p.street = replace(p.street,chr(9),'') where instr(p.street ,chr(9)) >0 ;
+commit;

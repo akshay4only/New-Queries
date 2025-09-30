@@ -1,0 +1,43 @@
+Step 1)//to check dst/dsa/connector codes....
+ select*from qc_master.qm_agencytypemaster -- get originationtype id from here
+
+ Step 2)///to check agency name
+ select*from qc_master.qm_agencymaster --  get originationname id from here 
+ 
+ Step 3)///to check agency name
+select*from qc_master.qm_agentmaster -- get originationagent id from here 
+
+
+//// IF want to change only channel n agent/update DST/to check data through code use below query
+
+1)take out agencyid n agentmasterid from here.............
+---select * from qc_master.qm_agentmaster am where am.agentmastercode='MUMDSA0012';
+
+2) Primary& secondary 
+
+//Primary
+update qc_los.qt_loandetail af
+    set af.originationtype  = 1000000002,
+        af.originationname  = 1000000452,--AGENCYID
+        af.originationagent = 1000000561  --AGENTMASTERID
+  where af.prospectcode = 'HNGP20000010197'
+
+//Secondary
+update qc_los.qt_loandetail af
+    set af.fulfillmenttype  = 1000000007,
+        af.fulfillmentname  = 1000000628,--AGENCYID
+        af.fulfillmentagent = 1000000968 ---AGENTMASTERID
+  where af.prospectcode = 'HNGP20000010197';
+
+
+
+
+
+
+
+
+
+        
+        
+
+   

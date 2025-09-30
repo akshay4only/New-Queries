@@ -1,0 +1,7 @@
+update qc_master.qt_property_legalval_hl l
+   set l.valuationdate = '31-Jul-2022'
+where l.property_id =
+       (select pty.property_id
+          from qc_los.qt_loandetail ld, qc_los.qt_property pty
+         where ld.prospectcode = 'HSHD22000026013'
+           and ld.prospectid = pty.prospect_id)

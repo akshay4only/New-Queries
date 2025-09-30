@@ -1,0 +1,11 @@
+declare
+p_remarks varchar2(100);
+p_status number;
+
+begin
+-- Call the insert procedure
+QC_LMS.pkg_nhb_adf_integration.pr_nhb_adf_insert_trans(p_remarks,p_status);
+-- Call the validation procedure
+QC_LMS.pkg_nhb_adf_integration.pr_nhb_adf_validate_trans(p_remarks,p_status);
+end;
+

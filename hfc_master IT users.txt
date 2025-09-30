@@ -1,0 +1,9 @@
+select * from hfc_user_master   
+where (ED in (190399,190127,190573)  or COED in (190399,190127,190573)) and IS_ACTIVE ='Y'
+
+update hfc_user_master set FUNCTION ='IT'  
+where (ED in (190399,190127,190573)  or COED in (190399,190127,190573)) and IS_ACTIVE ='Y'
+
+
+
+Products(HFC-homeloan, HFC-LAP,HFC-EIL/Home Loan ,LAP,EIL)

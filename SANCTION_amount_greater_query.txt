@@ -1,0 +1,9 @@
+
+update qc_los.qt_incomedetaileligibility ie
+set ie.incomedtl_loanamtltv = 4890800 -- Eligible Loan... from Loan Detail screen
+where ie.prospectid in
+       (select ld.prospectid
+          from qc_los.qt_loandetail ld
+         where ld.prospectcode = 'HCBE22000021210')
+
+

@@ -1,0 +1,12 @@
+connect by hfcdev
+
+select * from hfc_user_master where EMPLOYEE_CODE in 
+(select EMPLOYEE_CODE from hfc_user_master group by EMPLOYEE_CODE having count(EMPLOYEE_CODE)>1)
+
+update hfc_user_master set IS_ACTIVE ='Y'  where EMPLOYEE_CODE in 
+(select EMPLOYEE_CODE from hfc_user_master group by EMPLOYEE_CODE having count(EMPLOYEE_CODE)>1)
+
+
+select EMPLOYEE_CODE from hfc_user_master group by EMPLOYEE_CODE having count(EMPLOYEE_CODE)>1
+
+IS_ACTIVE

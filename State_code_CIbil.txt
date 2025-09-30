@@ -1,0 +1,81 @@
+        stateCode.put("AP", "28");
+	stateCode.put("AR", "12");
+	stateCode.put("AS", "18");
+	stateCode.put("BR", "10");
+	stateCode.put("CG", "22");
+	stateCode.put("GA", "30");
+	stateCode.put("GJ", "24");
+	stateCode.put("HR", "06");
+	stateCode.put("HP", "02");
+	stateCode.put("JK", "01");
+	stateCode.put("JH", "20");
+	stateCode.put("KA", "29");
+	stateCode.put("KL", "32");
+	stateCode.put("MP", "23");
+	stateCode.put("MH", "27");
+	stateCode.put("MN", "14");
+	stateCode.put("ML", "17");
+	stateCode.put("MZ", "15");
+	stateCode.put("NL", "13");
+	stateCode.put("OR", "21");
+	stateCode.put("PB", "03");
+	stateCode.put("RJ", "08");
+	stateCode.put("SK", "11");
+	stateCode.put("TN", "33");
+	stateCode.put("TS", "36");
+	stateCode.put("TG", "36");// In IREP required for CIBIL because TG properly working with Equifax
+	stateCode.put("TR", "16");
+	stateCode.put("UK", "05");
+	stateCode.put("UP", "09");
+	stateCode.put("WB", "19");
+	stateCode.put("AN", "35");
+	stateCode.put("CH", "04");
+	stateCode.put("DN", "26");
+	stateCode.put("DD", "25");
+	stateCode.put("DL", "07");
+	stateCode.put("LD", "31");
+	stateCode.put("PY", "34");
+
+
+
+stateCode.put("Jammu & Kashmir", "01");
+	stateCode.put("Himachal Pradesh", "02");
+	stateCode.put("Punjab", "03");
+	stateCode.put("Chandigarh", "04");
+	stateCode.put("Uttaranchal", "05");
+	stateCode.put("Haryana", "06");
+	stateCode.put("Delhi", "07");
+	stateCode.put("Rajasthan", "08");
+	stateCode.put("Uttar Pradesh", "09");
+	stateCode.put("Bihar", "10");
+	stateCode.put("Sikkim", "11");
+	stateCode.put("Arunachal Pradesh", "12");
+	stateCode.put("Nagaland", "13");
+	stateCode.put("Manipur", "14");
+	stateCode.put("Mizoram", "15");
+	stateCode.put("Tripura", "16");
+	stateCode.put("Meghalaya", "17");
+	stateCode.put("Assam", "18");
+	stateCode.put("West Bengal", "19");
+	stateCode.put("Jharkhand", "20");
+	stateCode.put("Orissa", "21");
+	stateCode.put("Chhattisgarh", "22");
+	stateCode.put("Madhya Pradesh", "23");
+	stateCode.put("Gujarat", "24");
+	stateCode.put("Daman & Diu", "25");
+	stateCode.put("Dadra & Nagar Haveli", "26");
+	stateCode.put("Maharashtra", "27");
+	stateCode.put("Andhra Pradesh", "28");  37
+	stateCode.put("Karnataka", "29");
+	stateCode.put("Goa", "30");
+	stateCode.put("Lakshadweep", "31");
+	stateCode.put("Kerala", "32");
+	stateCode.put("Tamil Nadu", "33");
+	stateCode.put("Pondicherry", "34");
+	stateCode.put("Andaman & Nicobar Islands", "35");
+	stateCode.put("Telangana", "36");
+	stateCode.put("APO Address", "99");
+
+
+
+

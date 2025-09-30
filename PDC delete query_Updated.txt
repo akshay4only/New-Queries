@@ -1,0 +1,82 @@
+Run with LMS schema
+
+
+declare 
+
+V_HIST_ID number;
+V_HIST_CODE varchar2(50);
+
+BEGIN
+  qc_lms.PR_GENERATE('HIST_INSTR_ENTRY_DTL', V_HIST_ID, V_HIST_CODE);
+
+  INSERT INTO qc_lms.HIST_INSTR_ENTRY_DTL
+  SELECT X.INSTR_ENTRY_DTL_ID,
+         X.PROSPECT_ID,
+         X.CUSTOMER_ID,
+         X.INSTRUMENT_TYPE,
+         X.INSTL_NO,
+         X.DUE_DATE,
+         X.INSTL_AMT,
+         X.CHEQUE_NO,
+         X.BANK_ID,
+         X.BANKBRANCH_ID,
+         X.BANK_ACNT_NO,
+         X.MICR_CODE,
+         X.ALPHA_CODE,
+         X.INSTRUMENT_AMT,
+         X.INSTRUMENT_DATE,
+         X.INSTRUMENT_STATUS,
+         X.INSTRUMENT_STATUSDATE,
+         X.REMARKS,
+         X.INSTR_EDIT_STATUS,
+         X.INSTR_EDIT_REASON,
+         X.BATCH_GENERATED,
+         X.MAKER_REMARKS,
+         X.MAKER_SYSDATETIME,
+         X.MAKER_DATE,
+         X.MAKER_ID,
+         X.AUTH_SYSDATETIME,
+         X.AUTH_DATE,
+         X.AUTH_ID,
+         X.AUTH_REMARKS,
+         X.AUTH_STATUS,
+         X.LASTUPDATE_DATETIME,
+         X.SEC_CHEQUE,
+         X.BRANCH_ID,
+         V_HIST_ID,
+         SYSDATE,
+         X.TDS_AMOUNT,
+         X.NET_CHARGE_AMNT,
+         X.IFSC_CODE,
+         X.APPLY_TDS,
+         X.UMRN
+    FROM qc_lms.QT_INSTR_ENTRY_DTL X
+   WHERE BATCH_GENERATED = '1'
+     AND X.DUE_DATE > TO_DATE(QC_LOS.GETPARAMVALUE('LOS', 'BUSINESS DATE'),
+                               'DD-MON-YYYY')
+     AND X.PROSPECT_ID =
+         (SELECT l.PROSPECTID
+           FROM QC_LOS.QT_LOANDETAIL l
+           where l.PROSPECTcode in ('HANG22000019696'));
+     END;
+     
+     
+     delete from qc_lms.qt_instr_entry_dtl e
+ where e.prospect_id in
+       (select ld.prospectid
+          from qc_los.qt_loandetail ld
+         where ld.prospectcode in
+               ('HANG22000019696'))
+   and e.due_date >
+       to_date(qc_los.getparamvalue('LOS', 'BUSINESS DATE'), 'dd-mon-yyyy');
+
+       
+       
+      select *  from qc_lms.qt_instr_entry_dtl e
+ where e.prospect_id in
+       (select ld.prospectid
+          from qc_los.qt_loandetail ld
+         where ld.prospectcode in
+               ('HANG22000019696'))
+ and e.due_date >
+       to_date(qc_los.getparamvalue('LOS', 'BUSINESS DATE'), 'dd-mon-yyyy');
