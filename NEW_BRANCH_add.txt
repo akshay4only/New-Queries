@@ -1,0 +1,5 @@
+
+
+After creation of branch in Mifin,it must reflect in Daily MIS so UPDATE IN backend also(138  qc_master)
+
+ select * from qc_master.qm_geo order by 1 desc;

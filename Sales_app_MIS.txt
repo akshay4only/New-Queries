@@ -1,0 +1,12 @@
+ 
+select g.geoname, 
+       sum(case when wl.loanstatusname = 'PENDING' then 1 else 0 end) PENDING,
+        sum(case when wl.loanstatusname = 'REJECT' then 1 else 0 end) REJECT
+       , sum(case when wl.loanstatusname = 'APPROVED' then 1 else 0 end) APPROVED
+       , sum(case when wl.loanstatusname in ( 'AUTHORISED', 'PARTIALLY_DISBURSED','DISBURSED') then 1 else 0 end) AUTHORISED
+  from qc_los.qt_loandetail ld, qc_master.qm_workflow_loanstatus wl, qc_master.qm_geo g
+ where ld.app_name = 'MIFIN_MOBILE'
+   and ld.applicationdate >= '05-May-2022'
+   and ld.loansubstatusid = wl.loanstatusid
+   and ld.branch = g.geoid
+   group by g.geoname

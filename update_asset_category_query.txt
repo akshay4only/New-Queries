@@ -1,0 +1,16 @@
+
+update qc_los.qt_property p
+set p.asset_category = (select assetcategoryid 
+                        from QC_MASTER.QM_ASSETCATEGORY 
+                        where ASSETCATEGORYNAME = (select ASSETCATEGORYNAME 
+                                                   from QC_MASTER.QM_ASSETCATEGORY 
+                                                   where assetcategoryid = p.asset_category)
+                         and productid = (select product 
+                                          from qc_los.qt_loandetail 
+                                          where prospectid = p.prospect_id))
+where p.property_id in (select p.property_id
+                        from qc_los.qt_loandetail ld,qc_los.qt_property p
+                        where ld.prospectid = p.prospect_id
+                        and ld.product||p.asset_category not in (select productid||assetcategoryid
+                                                                 from QC_MASTER.QM_ASSETCATEGORY)) ;  
+

@@ -1,0 +1,24 @@
+
+SELECT u.user_name as 'Employee Code',
+CONCAT(COALESCE(u.first_name), ' ', COALESCE(u.last_name,'')) as 'Employee Name', 
+bm.name as 'Branch Name',
+count(*) lead_created,
+sum(CASE WHEN l.status in ( 'cred_review' ,'closed')
+     THEN 1 else 0 end) send2CPA,
+ sum(CASE WHEN l.status = 'closed' 
+     THEN 1 else 0 end) Pushed2miFIN  
+
+/*CASE WHEN l.status = 'cred_review' 
+     THEN 'Sent to CPA' 
+     WHEN l.status = 'new' THEN 'NEW' 
+     WHEN l.status = 'cred_disapproval' THEN 'Credit Disapproval (Sent back to RO)' 
+     WHEN l.status = 'closed' THEN 'Sent to Mifin' 
+ End as 'Lead Status' */
+from leads l 
+JOIN users u ON l.created_by = u.id 
+JOIN users_cstm uc ON u.id = uc.id_c 
+JOIN bm_branches bm ON uc.bm_branches_id_c = bm.id 
+where l.date_entered >= '2022-05-05 00:00:00' 
+GROUP BY u.user_name,
+CONCAT(COALESCE(u.first_name), ' ', COALESCE(u.last_name,'')) , 
+bm.name  

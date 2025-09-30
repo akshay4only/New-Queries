@@ -1,0 +1,7 @@
+select * from HFCDEV.hfc_mst_user_group for update/////// TO GIVE REPORT ACCESS
+
+
+/// Menu accesss
+
+
+select * from qc_user_auth.qm_action;

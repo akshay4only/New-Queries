@@ -1,0 +1,3 @@
+select * from qc_user_auth.qm_user ----1000000437
+ 
+ select * from qc_user_auth.qm_userlocation l where l.userid=1000000437 for update;

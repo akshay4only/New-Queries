@@ -1,0 +1,2 @@
+
+ select * from qc_los.qt_loandetail l where l.prospectcode='HNGP22000023442';   

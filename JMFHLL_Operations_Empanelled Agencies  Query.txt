@@ -1,0 +1,11 @@
+
+
+
+select distinct b.description branch, agt.agencytypemastername,g.agencymastercode,g.agencymastername, to_char(g.maker_date,'Mon-YYYY') creation_month, agxt.active
+from qc_master.Qm_Agencytypemaster agt , qc_master.qm_agencymaster g, qc_master.qm_agency_x_activity_type agxt, qc_master.qm_geo b
+where agt.agencytypemasterid in (1000000026, 1000000020)
+   and agt.active = 'A'
+   and agt.agencytypemasterid = g.agencytypeid
+   and g.agencymasterid = agxt.agencymasterid
+   and agxt.product in ( 2000000050,2000000057,1000000046,1000000047)
+   and agxt.branch = b.geoid

@@ -1,0 +1,10 @@
+connect 138
+
+Old
+select * from qc_user_auth.qm_user u where u.loginname like 'RAJNARAYANAND' for update;
+
+
+New
+select * from qc_user_auth.qm_user u where lower(u.loginname) like 'djoshi2' for update;
+
+update qc_user_auth.qm_user u set u.locked='N' where lower(u.loginname) like 'meghag' 

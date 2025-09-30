@@ -1,0 +1,19 @@
+insert into qc_master.qm_geo_x_bankgl
+select (select max(bg1.id) from qc_master.qm_geo_x_bankgl bg1) + rownum,
+       1000000077 geoid,
+       bg.bankbranchid,
+       bg.accountno,
+       bg.branch_bank_gl_id,
+       bg.active,
+       bg.bankid,
+       1000000556 maker_id,
+       sysdate maker_date,
+       sysdate maker_sysdate,
+       'new branch setup' maker_remarks,       
+       1000000360 auth_id,
+       sysdate auth_date,
+       sysdate auth_sysdate,
+       'ok' auth_remark,
+       sysdate created_datetime,
+       null update_datetime
+ from qc_master.qm_geo_x_bankgl bg where bg.geoid = 1000000074

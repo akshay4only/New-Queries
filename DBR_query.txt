@@ -1,0 +1,4 @@
+
+update qc_los.qt_incomedetaileligibility ide
+set ide.incomedtl_dbrpercent = 53.57
+where ide.prospectcode = 'HCHN22000027848'

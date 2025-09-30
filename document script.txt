@@ -1,0 +1,7 @@
+Revised Query :
+update qc_los.qt_documentcollection dc
+   set dc.documenttypeid = 1000000021, dc.documentid = 1000000134
+where dc.documentid is null
+   and (dc.doc_stage_id = 1000000003 or
+       dc.doccollectionstatusid in ( 1000000004, 1000000010, 1000000011))
+

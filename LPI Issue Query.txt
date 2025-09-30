@@ -1,0 +1,27 @@
+--- In case below query doesn’t update any r and LPI still reflecting in SOA please connect either with me or Qualtech to revoke LPI.
+
+
+
+update qc_lms.qt_loancharge lch
+set  lch.total_charge = lch.total_charge - lch.charge_bal_amount,
+       lch.charge_amount = lch.total_charge - lch.charge_bal_amount,
+       lch.charge_bal_amount = lch.total_charge - lch.charge_bal_amount,
+       lch.net_charge_amt = lch.total_charge - lch.charge_bal_amount,
+       lch.bal_net_charge_amt = lch.total_charge - lch.charge_bal_amount,
+       lch.charge_status = 1       
+ where lch.prospect_id in
+       (select ld.prospectid
+          from qc_los.qt_loandetail ld
+         where ld.prospectcode = 'LNSK20000007828')
+  and lch.charge_id in(1000000114) -- 1000010114 - Payable
+  and lch.charge_status = 0;
+
+
+//charge amnt and charge bal amount should be same , then execute the update query.
+select * from qc_lms.qt_loancharge lch       
+ where lch.prospect_id in
+       (select ld.prospectid
+          from qc_los.qt_loandetail ld
+         where ld.prospectcode = 'LNSK20000007828')
+  and lch.charge_id in(1000000114) -- 1000010114 - Payable, - 1000010104 advance against EMI
+  and lch.charge_status = 0;

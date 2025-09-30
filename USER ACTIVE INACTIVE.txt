@@ -1,0 +1,4 @@
+
+
+
+select * from qc_user_auth.qm_user u where u.loginname='WILFREDD' for update;

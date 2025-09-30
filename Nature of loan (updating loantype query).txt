@@ -1,0 +1,36 @@
+using lower case and like operator
+
+SELECT * FROM QC_MASTER.QM_PURPOSEOFLOAN pl where lower(pl.purposeofloanname) like '%sale%';
+
+///get loantypeid from here
+- SELECT * FROM QC_MASTER.QM_LOANTYPE ORDER BY 1 DESC ; 
+
+
+select * from qc_los.qt_loandetail l where l.prospectcode='LRJT22000023011';
+
+select * from qm_product p where p.productid=2000000057;/// take out productypeid or scheme from this.
+
+-SELECT * FROM QC_MASTER.QM_LOANTYPE l where l.productid=2000000065 or scheme ---1000000025
+
+update qc_los.qt_loandetail ld set ld.loantype = '1000000025' where ld.prospectcode = 'LRJT22000023011';
+
+///for updating loan type THROUGH LOANTYPEID
+update qc_los.qt_loandetail ld set ld.loantype = '1000000089' where ld.prospectcode = 'HRJT20000009992';
+
+/// get purposeloanid from here.
+select * from qm_loantype;
+
+-select * from qc_los.qt_loandetail ld where ld.purposeofloan='';
+
+-select * from qc_master.qm_purposeofloan l where l.productid='2000000050' order by 1 desc;--productid is equal to product taken out from loandetailpart.
+
+--SELECT * FROM QC_MASTER.QM_PURPOSEOFLOAN ORDER BY 1 DESC;
+
+/// update purposeloanid.
+
+update qc_los.qt_loandetail ld set ld.purposeofloan='1000000109' where ld.prospectcode='';
+
+update qc_los.qt_loandetail ld set ld.purposeofloan='1000000109' where ld.prospectcode='HNGP20000010392'
+
+/////
+select * from qc_los.qt_property;

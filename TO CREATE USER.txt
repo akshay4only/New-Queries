@@ -1,0 +1,7 @@
+
+ for user related query use sys schema
+login with - sys schema (sysdba)
+
+select * from qc_user_auth.qm_user order by 1 desc;
+
+select * from qc_user_auth.qm_user order by 1 desc for update;

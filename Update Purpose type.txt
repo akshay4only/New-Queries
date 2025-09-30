@@ -1,0 +1,3 @@
+  select * from qc_los.qt_loandetail l where l.prospectcode='HAMD22000025502';---product 2000000050  scheme 2000000062
+  
+  select * from qc_master.qm_purposeofloan a where a.productid='2000000062';  fill product

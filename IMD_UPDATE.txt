@@ -1,0 +1,13 @@
+
+ select ld.prospectid 
+
+          from qc_los.qt_loandetail ld 
+
+         where prospectcode in ('HSUR22000025930'); 
+         
+         
+         
+ select * from qc_master.qm_bankbranch ab where ab.micr_code='363002005'; --bank_br_id 1000245864 --ifsc SBIN0005744 --bank_id 3465 ----prospect 1000025949
+ select * from qc_lms.qt_otc_imd a where a.prospect_id ='1000025931' for update;  
+
+ select * from qc_master.qm_instrumenttype;  

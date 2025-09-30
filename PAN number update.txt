@@ -1,0 +1,18 @@
+
+--NSK000000014005 -- 	CN0000000023505 -- ANUPB5360P
+update qc_los.qt_applicantmaster c set c.panno = 'ANUPB5360P' where c.applicantcode = 'CN0000000023505';
+update qc_dedupe.qt_internal c set c.pan = 'ANUPB5360P' where c.actual_custid = 'CN0000000023505';
+update qc_dedupe.qt_newcustomer_hist f set f.pan = 'ANUPB5360P'where f.actual_custid = 'CN0000000023505';
+
+
+
+select ld.prospectcode,
+       lxc.new_applicantid,
+       upper(app.fname || ' ' || app.mname || ' ' || app.lname) customer_name
+  from qc_los.qt_loan_x_customer lxc,
+       qc_los.qt_applicantmaster app,
+       qc_los.qt_loandetail      ld
+where lxc.new_applicantid = app.applicantid
+   and lxc.prospectid = ld.prospectid
+   and ld.prospectcode in
+       ('HKYN18000000361’)

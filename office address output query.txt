@@ -1,0 +1,22 @@
+Send me the output of below query in case any such issue reported by user
+
+Oracle user from which query should be executed : QC_LOS
+select * from  qc_los.qt_applicantaddress addr where  addr.addresstype = 1000000002
+and addr.applicantid in (
+select applicantid from (
+select lxc.prospectid, ld.loansubstatusid, lxc.applicantid,
+(select cst.constitutionname
+          from qc_master.qm_constitution cst
+         where cst.constitutionid = app.legal_form_type) constitution
+  from qc_los.qt_loandetail      ld,
+       qc_master.qm_product      prd,
+       qc_los.qt_loan_x_customer lxc,
+       qc_los.qt_applicantmaster app
+where  ld.product = prd.productid
+   and ld.prospectid = lxc.prospectid
+   and lxc.applicanttype in (1000000001, 1000000002)
+   and ld.product in (2000000050, 2000000057)
+   and lxc.new_applicantid = app.applicantid) a
+   where constitution = 'NON WORKING'
+   and loansubstatusid in (1000000001,1000000002)
+   and exists (select * from qc_los.qt_applicantaddress addr where addr.applicantid = a.applicantid and addr.addresstype = 1000000002) )

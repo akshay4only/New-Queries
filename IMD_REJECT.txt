@@ -1,0 +1,56 @@
+--IMD Reject
+update qc_lms.qt_otc_imd otc
+   set otc.instrument_status = 'X', otc.auth_status = 'R'
+ where otc.prospect_id in
+       (select ld.prospectid
+          from qc_los.qt_loandetail ld
+         where prospectcode in ('HJPR22000024148'));
+
+
+ --MArk IMD Status completed      
+update qc_los.qt_prospect_x_activity pxa
+   set pxa.status = 2
+ where pxa.prospectid in
+       (select ld.prospectid
+          from qc_los.qt_loandetail ld
+         where prospectcode in ('HJPR22000024148'))
+   and pxa.activityid = 1000000177
+
+
+--IMD Reject  against receipt no
+
+update qc_lms.qt_otc_imd otc 
+
+   set otc.instrument_status = 'X', otc.auth_status = 'R' 
+
+where otc.prospect_id in 
+
+       (select ld.prospectid 
+
+          from qc_los.qt_loandetail ld 
+
+         where prospectcode in ('HJPR22000024148')) 
+and otc.receipt_no = '' --put receipt no here; 
+
+
+
+--IMD Reject  against receipt no updated query
+
+select *
+  from qc_lms.qt_otc_imd otc
+where otc.auth_status = 'R'
+   and exists (select 1
+          from qc_lms.qt_loancharge lch
+         where lch.activity_id = otc.otc_imd_id
+           and lch.activity_name = 'IMD'
+           and lch.charge_status in (0,1))
+
+
+
+select * from qc_lms.qt_otc_imd otc where otc.prospect_id in 
+
+       (select ld.prospectid 
+
+          from qc_los.qt_loandetail ld 
+
+         where prospectcode in ('HANG22000024909')); 
